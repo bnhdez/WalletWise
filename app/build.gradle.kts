@@ -50,15 +50,21 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+
+    // Dependencias para Jetpack Compose
     implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.material)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.coil.compose)
+
+    // Dependencias para Material Design 3 (Material You)
     implementation(libs.androidx.material3)
+
+    // Dependencias para pruebas y herramientas
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
