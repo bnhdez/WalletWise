@@ -1,9 +1,7 @@
-package com.example.walletwise
+package com.example.walletwise.ui.screens
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -15,57 +13,25 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.walletwise.ui.theme.WalletWiseTheme
+import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
-import androidx.compose.foundation.background
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            WalletWiseTheme {
-                MainScreen()
-            }
-        }
-    }
-}
+import com.example.walletwise.R
+import com.example.walletwise.ui.Header
+import com.example.walletwise.ui.theme.WalletWiseTheme
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun MainScreen() {
+fun HomeScreen(navController: NavHostController) {
     Scaffold(
-        bottomBar = { BottomNavigationBar() }
+        topBar = { Header() }  // Mantiene el Header en la parte superior de la pantalla
     ) { padding ->
         Column(
             modifier = Modifier
-                .padding(padding)
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(padding)  // Asegura que el contenido no esté detrás del Header
+                .padding(horizontal = 16.dp)
         ) {
-            Header()
-            Spacer(modifier = Modifier.height(16.dp))
             ContentSection()
-        }
-    }
-}
-
-@Composable
-fun Header() {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        IconButton(onClick = { /* Acción para notificaciones */ }) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_notification),
-                contentDescription = "Notificación"
-            )
-        }
-        IconButton(onClick = { /* Acción para perfil */ }) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_profile),
-                contentDescription = "Perfil"
-            )
         }
     }
 }
@@ -79,7 +45,7 @@ fun ContentSection() {
             contentDescription = "Banner principal",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(150.dp) // Ajusta la altura según tus necesidades
+                .height(150.dp)
                 .background(Color.Gray, shape = RoundedCornerShape(8.dp))
         )
 
@@ -133,34 +99,10 @@ fun ContentSection() {
     }
 }
 
-@Composable
-fun BottomNavigationBar() {
-    NavigationBar {
-        NavigationBarItem(
-            icon = { Icon(painterResource(id = R.drawable.ic_home), contentDescription = "Home") },
-            label = { Text("Home") },
-            selected = true,
-            onClick = { /* Acción al hacer clic en Home */ }
-        )
-        NavigationBarItem(
-            icon = { Icon(painterResource(id = R.drawable.ic_modules), contentDescription = "Módulos") },
-            label = { Text("Módulos") },
-            selected = false,
-            onClick = { /* Acción al hacer clic en Módulos */ }
-        )
-        NavigationBarItem(
-            icon = { Icon(painterResource(id = R.drawable.ic_challenges), contentDescription = "Retos") },
-            label = { Text("Retos") },
-            selected = false,
-            onClick = { /* Acción al hacer clic en Retos */ }
-        )
-    }
-}
-
 @Preview(showBackground = true)
 @Composable
-fun MainScreenPreview() {
+fun HomeScreenPreview() {
     WalletWiseTheme {
-        MainScreen()
+        HomeScreen(navController = rememberNavController())
     }
 }
