@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.walletwise.R
 import com.example.walletwise.ui.screens.HomeScreen
 import com.example.walletwise.ui.screens.ModulesScreen
+import com.example.walletwise.ui.screens.ChallengesScreen
 import com.example.walletwise.ui.theme.WalletWiseTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,6 +43,7 @@ fun MainScreen(navController: NavHostController) {
         ) {
             composable("home") { HomeScreen(navController) }
             composable("modules") { ModulesScreen() }
+            composable("challenges") { ChallengesScreen() }
         }
     }
 }
@@ -65,7 +67,7 @@ fun BottomNavigationBar(navController: NavHostController) {
             icon = { Icon(painterResource(id = R.drawable.ic_challenges), contentDescription = "Retos") },
             label = { Text("Retos") },
             selected = false,
-            onClick = { /* Acción para Retos */ }
+            onClick = { navController.navigate("challenges") }
         )
     }
 }
