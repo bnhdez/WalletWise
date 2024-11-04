@@ -21,9 +21,9 @@ import com.example.walletwise.ui.theme.WalletWiseTheme
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     Scaffold(
-        topBar = { Header() }  // Mantiene el Header en la parte superior de la pantalla
+        topBar = { Header(navController)}  // Mantiene el Header en la parte superior de la pantalla
     ) { padding ->
         Column(
             modifier = Modifier

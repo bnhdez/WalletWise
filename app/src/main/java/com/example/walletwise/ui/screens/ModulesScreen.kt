@@ -12,13 +12,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.walletwise.ui.Header
 import com.example.walletwise.ui.theme.WalletWiseTheme
 
 @Composable
-fun ModulesScreen() {
+fun ModulesScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     Scaffold(
-        topBar = { Header() }
+        topBar = { Header(navController) }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -101,6 +103,7 @@ fun CircleButton(number: String, backgroundColor: Color) {
 @Composable
 fun ModulesScreenPreview() {
     WalletWiseTheme {
-        ModulesScreen()
+        val fakeNavController = rememberNavController()
+        ModulesScreen(navController = fakeNavController)
     }
 }

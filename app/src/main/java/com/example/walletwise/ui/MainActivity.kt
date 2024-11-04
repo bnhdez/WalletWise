@@ -17,7 +17,12 @@ import com.example.walletwise.R
 import com.example.walletwise.ui.screens.HomeScreen
 import com.example.walletwise.ui.screens.ModulesScreen
 import com.example.walletwise.ui.screens.ChallengesScreen
+import com.example.walletwise.ui.screens.LoginScreen
+import com.example.walletwise.ui.screens.ProfileDetailScreen
+import com.example.walletwise.ui.screens.ProfileScreen
+import com.example.walletwise.ui.screens.RegisterScreen
 import com.example.walletwise.ui.theme.WalletWiseTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,26 +30,56 @@ class MainActivity : ComponentActivity() {
         setContent {
             WalletWiseTheme {
                 val navController = rememberNavController()
-                MainScreen(navController)
+                MainNavigation(navController)
             }
         }
     }
 }
 
 @Composable
-fun MainScreen(navController: NavHostController) {
-    Scaffold(
-        bottomBar = { BottomNavigationBar(navController) }
-    ) { padding ->
-        NavHost(
-            navController = navController,
-            startDestination = "home",
-            modifier = Modifier.padding(padding)
-        ) {
-            composable("home") { HomeScreen(navController) }
-            composable("modules") { ModulesScreen() }
-            composable("challenges") { ChallengesScreen() }
+fun MainNavigation(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = "login" // La pantalla de inicio de sesión será la primera en cargarse
+    ) {
+        composable("login") {
+            LoginScreen(navController = navController)
         }
+        composable("register") {
+            RegisterScreen(navController = navController)
+        }
+        composable("home") {
+            MainScreenWithBottomNav(navController) { modifier ->
+                HomeScreen(navController = navController, modifier = modifier)
+            }
+        }
+        composable("modules") {
+            MainScreenWithBottomNav(navController) { modifier ->
+                ModulesScreen(navController = navController, modifier = modifier)
+            }
+        }
+        composable("challenges") {
+            MainScreenWithBottomNav(navController) { modifier ->
+                ChallengesScreen(navController = navController, modifier = modifier)
+            }
+        }
+        composable("profile") {
+            ProfileScreen(navController = navController)
+        }
+        composable("profileDetail") { ProfileDetailScreen(navController = navController) }
+    }
+}
+
+@Composable
+fun MainScreenWithBottomNav(
+    navController: NavHostController,
+    content: @Composable (Modifier) -> Unit
+) {
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController) }  // Barra de navegación inferior
+    ) { padding ->
+        // Aplicamos el padding proporcionado al content
+        content(Modifier.padding(padding))
     }
 }
 
@@ -74,9 +109,9 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun MainScreenPreview() {
+fun MainActivityPreview() {
     WalletWiseTheme {
         val navController = rememberNavController()
-        MainScreen(navController)
+        MainNavigation(navController = navController)
     }
 }

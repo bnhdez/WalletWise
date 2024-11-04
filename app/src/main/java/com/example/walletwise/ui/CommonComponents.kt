@@ -8,10 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavHostController
 import com.example.walletwise.R
 
 @Composable
-fun Header() {
+fun Header(navController: NavHostController) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -23,10 +24,10 @@ fun Header() {
                 contentDescription = "Notificación"
             )
         }
-        IconButton(onClick = { /* Acción para perfil */ }) {
+        IconButton(onClick = { navController.navigate("profile") }) { // Navega a la pantalla de perfil
             Icon(
                 painter = painterResource(id = R.drawable.ic_profile),
-                contentDescription = "Perfil"
+                contentDescription = "Profile"
             )
         }
     }

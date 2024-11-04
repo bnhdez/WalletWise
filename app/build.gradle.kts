@@ -63,6 +63,10 @@ dependencies {
 
     // Dependencias para Material Design 3 (Material You)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 
     // Dependencias para pruebas y herramientas
     testImplementation(libs.junit)

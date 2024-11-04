@@ -13,13 +13,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.walletwise.R
 import com.example.walletwise.ui.Header
 
 @Composable
-fun ChallengesScreen() {
+fun ChallengesScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     Scaffold(
-        topBar = { Header() }
+        topBar = { Header(navController) }
     ) { padding ->
         Column(
             modifier = Modifier

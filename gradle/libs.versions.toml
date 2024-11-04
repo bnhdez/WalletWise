@@ -16,6 +16,10 @@ ui = "1.7.5"
 uiTestJunit4 = "1.7.5"
 uiTooling = "1.7.5"
 uiToolingPreview = "1.7.5"
+appcompat = "1.6.1"
+materialVersion = "1.10.0"
+activity = "1.8.0"
+constraintlayout = "2.1.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +42,10 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 # Material Design Libraries
 androidx-material = { module = "androidx.compose.material:material" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
