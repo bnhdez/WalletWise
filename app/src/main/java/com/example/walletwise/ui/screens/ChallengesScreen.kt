@@ -56,8 +56,8 @@ fun ChallengesScreen(navController: NavHostController, modifier: Modifier = Modi
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
-                    .background(Color(0xFFE1BEE7), shape = RoundedCornerShape(8.dp)),
+                    .height(80.dp)
+                    .background(Color(0xFFE91E63), shape = RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Text("Publicidad", textAlign = TextAlign.Center, color = Color.White)
@@ -81,7 +81,7 @@ fun ChallengeImageCard(title: String, subtitle: String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_profile), // Puedes cambiar esto por la imagen que desees
+            painter = painterResource(id = R.drawable.challenge), // Puedes cambiar esto por la imagen que desees
             contentDescription = null,
             modifier = Modifier
                 .size(100.dp)

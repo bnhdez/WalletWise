@@ -41,7 +41,7 @@ fun ContentSection() {
     Column {
         // Imagen superior (desde drawable)
         Image(
-            painter = painterResource(id = R.drawable.ic_banner),
+            painter = painterResource(id = R.drawable.banner1),
             contentDescription = "Banner principal",
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,18 +66,17 @@ fun ContentSection() {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(100.dp)
-                .background(Color.LightGray, shape = RoundedCornerShape(8.dp)),
+                .height(80.dp)
+                .background(Color(0xFFE91E63), shape = RoundedCornerShape(8.dp)),
             contentAlignment = Alignment.Center
         ) {
-            Text("Publicidad", textAlign = TextAlign.Center)
+            Text("Publicidad",color = Color.White, textAlign = TextAlign.Center)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        val imageUrl = "https://placehold.jp/150x150.png"
         Image(
-            painter = rememberAsyncImagePainter(imageUrl),
+            painter = painterResource(id = R.drawable.banner2),
             contentDescription = "Imagen desde URL",
             modifier = Modifier
                 .fillMaxWidth()
