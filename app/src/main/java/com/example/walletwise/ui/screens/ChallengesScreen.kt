@@ -32,12 +32,13 @@ fun ChallengesScreen(navController: NavHostController, modifier: Modifier = Modi
             Text(
                 text = "Retos",
                 style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
+                color = MaterialTheme.colorScheme.onBackground, // Ajuste según el tema
                 modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
             )
             Text(
                 text = "You have saved 3 images",
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Gray
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f) // Ajuste según el tema
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -60,7 +61,7 @@ fun ChallengesScreen(navController: NavHostController, modifier: Modifier = Modi
                     .background(Color(0xFFE91E63), shape = RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
-                Text("Publicidad", textAlign = TextAlign.Center, color = Color.White)
+                Text("Publicidad", textAlign = TextAlign.Center, color = Color.White,)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -76,7 +77,7 @@ fun ChallengeImageCard(title: String, subtitle: String) {
     Column(
         modifier = Modifier
             .width(150.dp)
-            .background(Color.LightGray, shape = RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(8.dp)) // Color ajustado según el tema
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -85,18 +86,19 @@ fun ChallengeImageCard(title: String, subtitle: String) {
             contentDescription = null,
             modifier = Modifier
                 .size(100.dp)
-                .background(Color.Gray, shape = RoundedCornerShape(8.dp))
+                .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f), shape = RoundedCornerShape(8.dp)) // Fondo de imagen ajustado según el tema
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = title,
             style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+            color = MaterialTheme.colorScheme.onSurface, // Ajuste según el tema
             textAlign = TextAlign.Center
         )
         Text(
             text = subtitle,
             style = MaterialTheme.typography.bodySmall,
-            color = Color.Gray,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), // Ajuste según el tema
             textAlign = TextAlign.Center
         )
     }

@@ -7,7 +7,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,7 +28,7 @@ fun ProfileDetailScreen(navController: NavHostController) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_close),
                         contentDescription = "Cerrar",
-                        tint = Color.Black
+                        tint = MaterialTheme.colorScheme.onBackground // Cambia según el tema
                     )
                 }
             }
@@ -57,7 +56,8 @@ fun ProfileDetailScreen(navController: NavHostController) {
             Text(
                 text = "[Kevin]",
                 style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onBackground // Cambia según el tema
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -80,12 +80,12 @@ fun ProfileInfoField(label: String, value: String) {
         Text(
             text = label,
             style = MaterialTheme.typography.labelSmall,
-            color = Color.Gray
+            color = MaterialTheme.colorScheme.onSurfaceVariant // Cambia según el tema
         )
         Text(
             text = value,
             style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground // Cambia según el tema
         )
     }
 }

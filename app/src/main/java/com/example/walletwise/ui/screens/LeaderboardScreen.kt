@@ -7,7 +7,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -15,6 +14,7 @@ import androidx.navigation.NavController
 import com.example.walletwise.R
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,12 +30,14 @@ fun LeaderboardScreen(navController: NavController) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leaderboard),
                             contentDescription = "Leaderboard",
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(24.dp),
+                            tint = MaterialTheme.colorScheme.onBackground // Cambia según el tema
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Leaderboard",
-                            style = MaterialTheme.typography.titleLarge.copy(fontSize = 24.sp)
+                            style = MaterialTheme.typography.titleLarge.copy(fontSize = 24.sp),
+                            color = MaterialTheme.colorScheme.onBackground // Cambia según el tema
                         )
                     }
                 },
@@ -44,14 +46,14 @@ fun LeaderboardScreen(navController: NavController) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_close),
                             contentDescription = "Cerrar",
-                            tint = Color.Black
+                            tint = MaterialTheme.colorScheme.onBackground // Cambia según el tema
                         )
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Transparent,
-                    titleContentColor = Color.Black,
-                    navigationIconContentColor = Color.Black
+                    titleContentColor = MaterialTheme.colorScheme.onBackground,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onBackground
                 )
             )
         }
@@ -106,13 +108,13 @@ fun LeaderboardItem(text: String) {
             painter = painterResource(id = R.drawable.ic_trophy),
             contentDescription = "Trophy",
             modifier = Modifier.size(24.dp),
-            tint = Color.Black
+            tint = MaterialTheme.colorScheme.onBackground // Cambia según el tema
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = text,
             style = MaterialTheme.typography.bodyLarge,
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground // Cambia según el tema
         )
     }
 }
