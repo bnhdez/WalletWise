@@ -9,8 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -22,49 +21,57 @@ fun ModulesScreen(navController: NavHostController, modifier: Modifier = Modifie
     Scaffold(
         topBar = { Header(navController) }
     ) { padding ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .padding(horizontal = 16.dp, vertical = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
+            item {
+                SectionHeader("Aprende a abrir una cuenta bancaria")
+                RowGrid(items = listOf("1" to Color(0xFF3F51B5), "2" to Color(0xFF3F51B5), "3" to Color.White, "4" to Color.White))
+                Spacer(modifier = Modifier.height(32.dp))
 
-            Text(
-                text = "Aprende a abrir una cuenta bancaria",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+                SectionHeader("Cómo transferir dinero a otra cuenta")
+                RowGrid(items = listOf("1" to Color(0xFF3F51B5), "2" to Color.White))
+                Spacer(modifier = Modifier.height(32.dp))
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                item { CircleGridItem("1", Color(0xFF3F51B5)) }
-                item { CircleGridItem("2", Color(0xFF3F51B5)) }
-                item { CircleGridItem("3", Color.White) }
-                item { CircleGridItem("4", Color.White) }
+                SectionHeader("¿Qué es el Crédito y cómo Funciona?")
+                RowGrid(items = listOf("1" to Color(0xFF3F51B5), "2" to Color(0xFF3F51B5), "3" to Color(0xFF3F51B5), "4" to Color(0xFF3F51B5), "5" to Color.White))
+                Spacer(modifier = Modifier.height(32.dp))
             }
+        }
+    }
+}
 
-            Spacer(modifier = Modifier.height(32.dp))
+@Composable
+fun SectionHeader(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier.padding(bottom = 16.dp)
+    )
+}
 
-            Text(
-                text = "Cómo transferir dinero a otra cuenta",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                item { CircleGridItem("1", Color(0xFF3F51B5)) }
-                item { CircleGridItem("2", Color.White) }
+@Composable
+fun RowGrid(items: List<Pair<String, Color>>) {
+    items.chunked(2).forEach { rowItems ->
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
+        ) {
+            rowItems.forEachIndexed { index, (number, color) ->
+                CircleGridItem(number, color)
+                // Agrega espacio solo entre los dos primeros elementos de cada fila
+                if (index < rowItems.size - 1) {
+                    Spacer(modifier = Modifier.width(56.dp)) // Ajusta el tamaño según el espacio deseado
+                }
+            }
+            if (rowItems.size == 1) {
+                Spacer(modifier = Modifier.size(80.dp)) // Espacio adicional para centrar
             }
         }
     }
@@ -72,7 +79,6 @@ fun ModulesScreen(navController: NavHostController, modifier: Modifier = Modifie
 
 @Composable
 fun CircleGridItem(number: String, backgroundColor: Color) {
-    // Este Box asegura el tamaño exacto y forma circular de cada botón
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.size(80.dp)  // Tamaño fijo cuadrado para cada botón
