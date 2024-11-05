@@ -21,6 +21,7 @@ import com.example.walletwise.ui.screens.LoginScreen
 import com.example.walletwise.ui.screens.ProfileDetailScreen
 import com.example.walletwise.ui.screens.ProfileScreen
 import com.example.walletwise.ui.screens.RegisterScreen
+import com.example.walletwise.ui.screens.LeaderboardScreen
 import com.example.walletwise.ui.theme.WalletWiseTheme
 
 
@@ -67,6 +68,7 @@ fun MainNavigation(navController: NavHostController) {
             ProfileScreen(navController = navController)
         }
         composable("profileDetail") { ProfileDetailScreen(navController = navController) }
+        composable("leaderboard") { LeaderboardScreen(navController = navController) }
     }
 }
 

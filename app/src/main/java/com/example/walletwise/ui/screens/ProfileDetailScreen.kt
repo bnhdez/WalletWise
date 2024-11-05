@@ -20,12 +20,14 @@ fun ProfileDetailScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.End
             ) {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_close), // Ícono de cierre
+                        painter = painterResource(id = R.drawable.ic_close),
                         contentDescription = "Cerrar",
                         tint = Color.Black
                     )
